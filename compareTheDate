@@ -1,0 +1,55 @@
+import java.util.*;
+public class MyDateTest {  //TEST CLASS
+
+	public static void main(String[] args) {
+		Scanner input =new Scanner(System.in);
+		int gun,ay,yil;
+		MyDate degisken=new MyDate();
+		MyDate sabit=new MyDate();
+		sabit.setDay(14);
+		sabit.setMonth(01);
+		sabit.setYear(2014);
+		System.out.print("Günü giriniz:");
+		gun=input.nextInt();
+		degisken.setDay(gun);
+		System.out.print("Ayı giriniz:");
+		ay=input.nextInt();
+		degisken.setMonth(ay);
+		System.out.print("Yılı giriniz:");
+		yil=input.nextInt();
+		degisken.setYear(yil);
+		if(sabit.isBigger(degisken)==true)
+			System.out.print("Girilen tarih daha geridir...");
+		else
+			System.out.print("Girilen tarih daha ileridir...");
+	}
+
+}
+
+import java.util.*;
+public class MyDateTest {   MYDATE CLASS
+
+	public static void main(String[] args) {
+		Scanner input =new Scanner(System.in);
+		int gun,ay,yil;
+		MyDate degisken=new MyDate();
+		MyDate sabit=new MyDate();
+		sabit.setDay(14);
+		sabit.setMonth(01);
+		sabit.setYear(2014);
+		System.out.print("Günü giriniz:");
+		gun=input.nextInt();
+		degisken.setDay(gun);
+		System.out.print("Ayı giriniz:");
+		ay=input.nextInt();
+		degisken.setMonth(ay);
+		System.out.print("Yılı giriniz:");
+		yil=input.nextInt();
+		degisken.setYear(yil);
+		if(sabit.isBigger(degisken)==true)
+			System.out.print("Girilen tarih daha geridir...");
+		else
+			System.out.print("Girilen tarih daha ileridir...");
+	}
+
+}
