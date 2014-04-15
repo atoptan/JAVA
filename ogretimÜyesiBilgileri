@@ -1,0 +1,105 @@
+import java.util.*;
+public class test {
+
+	public static void main(String[] args) {
+	Scanner input=new Scanner(System.in);
+	String isim,soyisim,arastırmaAlanı,bölümAdı;
+	int courseNumber;
+	String[] courseList ;
+	courseList=new String[20];
+	bölüm obj =new bölüm();
+	ögretimÜyesi obj2=new ögretimÜyesi();
+	System.out.print("Öğretim üyesinin ismi:");
+	isim=input.nextLine();
+	obj2.setName(isim);
+	System.out.print("Öğretim üyesinin soyismi:");
+	soyisim=input.nextLine();
+	obj2.setSurname(soyisim);
+	System.out.print("Öğretim üyesinin bölüm adı:");
+	bölümAdı=input.nextLine();
+	obj.setDepartmentName(bölümAdı);
+	System.out.print("Öğretim üyesinin arastırma alanı:");
+	arastırmaAlanı=input.nextLine();
+	obj2.setResearch_Area(arastırmaAlanı);
+	System.out.print("Öğretim üyesinin verdiği ders sayısı:");
+	courseNumber=input.nextInt();
+	obj.setCourseGiven(courseNumber);
+	for(int i=1;i<=courseNumber;i++)
+	{
+		System.out.print(i+".Ders:");
+		courseList[i-1]=input.nextLine();
+	}
+	obj.bölümBilgisi();
+	obj.dersBilgisi(courseList,courseNumber);
+	}
+
+}
+
+
+
+public class ögretimÜyesi {
+private String name;
+private String surname;
+private String Research_Area;
+public ögretimÜyesi()
+{}
+public ögretimÜyesi(String n,String s,String r)
+{
+	name=n;
+	surname=s;
+	Research_Area=r;
+}
+public String getName() {
+	return name;
+}
+public void setName(String n) {
+	name=n;
+}
+public String getSurname() {
+	return surname;
+}
+public void setSurname(String s) {
+	surname=s;
+}
+public String getResearch_Area() {
+	return Research_Area;
+}
+public void setResearch_Area(String r) {
+	Research_Area=r;
+}
+}
+
+public class bölüm {
+private String departmentName;
+private int courseGiven;
+public String[] Course_List;
+public String getDepartmentName() {
+	return departmentName;
+}
+public void setDepartmentName(String departmentName) {
+	this.departmentName = departmentName;
+}
+public int getCourseGiven() {
+	return courseGiven;
+}
+public void setCourseGiven(int courseGiven) {
+	this.courseGiven = courseGiven;
+}
+
+public void bölümBilgisi()
+{
+	ögretimÜyesi ogrÜyesi=new ögretimÜyesi();
+	System.out.println("Öğretim Üyesi:"+ogrÜyesi.getName()+" "+ogrÜyesi.getSurname());
+	System.out.println("Araştırma Alanı:"+ogrÜyesi.getResearch_Area());
+	System.out.println("Bölümü:"+getDepartmentName());
+}
+public void dersBilgisi( String[] a,int b)
+{
+   System.out.print("\nDers Listesi\n");
+   for(int l=1; l<=b;l++)
+   {
+	 System.out.print(l+".Ders :"+a[l-1]);  
+	 System.out.print("\n");
+   }
+}
+}
