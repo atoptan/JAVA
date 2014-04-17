@@ -1,0 +1,23 @@
+import java.util.*;
+public class count {
+
+	public static void main(String[] args) {
+		Scanner input=new Scanner(System.in);
+		String cumle="";
+		String[] dizi=null;
+		int kelime=0;
+		System.out.print("String degerini giriniz:");
+		cumle=input.nextLine();
+		cumle=cumle.trim();
+		System.out.println(cumle);
+		dizi=cumle.split(" ");
+		for(int i=0;i<dizi.length;i++)
+		{
+			kelime++;
+		}
+		System.out.print(kelime);
+	
+
+	}
+
+}
