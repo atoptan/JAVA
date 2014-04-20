@@ -15,9 +15,9 @@ public class deneme {
 				sonuc=false;
 				break;
 			}
-			}  //split stringi ayırır
-		if(sonuc==false) //trim boşlukları atar
-			System.out.print("Kelime palidrom değildir"); //tocharArray stringi char a cevirir
+			}  
+		if(sonuc==false) 
+			System.out.print("Kelime palidrom değildir"); 
 		else
 			System.out.print("Kelime palidromdur");
 	}
