@@ -1,0 +1,115 @@
+import java.util.*;
+public class GameOfLifeTest {   //TEST CLASS
+
+	public static void main(String[] args) {
+		Random rndm=new Random();
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter the dimension:");
+		int dimension=input.nextInt();
+		boolean[][] game =new boolean[dimension][dimension];
+		for(int i=0;i<game.length;i++)
+			for(int j=0;j<game.length;j++)
+		  	game[i][j]=rndm.nextBoolean();
+		GameOfLife obj=new GameOfLife(game);
+		obj.displayGrid();
+		System.out.println();
+		for(int k=0;k<10;k++)
+		{
+		obj.nextGeneration();
+		obj.displayGrid();
+		System.out.println();}
+		
+	}
+	}
+
+public class GameOfLife {    //GAMEOFLİFE CLASS
+	private boolean[][] grid;
+	private boolean[][] tempGrid;
+	public GameOfLife(boolean[][] dizi) 
+	{
+		grid=new boolean[dizi.length][dizi[0].length];
+		tempGrid=new boolean[dizi.length][dizi[0].length];
+		for(int i=0;i<dizi.length;i++)
+			for(int j=0;j<dizi.length;j++)
+			{
+				grid[i][j]=dizi[i][j];
+				tempGrid[i][j]=dizi[i][j];
+			}
+	}
+
+public void nextGeneration()
+{
+	int komsuSayısı=0;
+	
+	for(int i=0;i<grid.length;i++) 
+	{
+		
+		for(int j=0;j<grid.length;j++)
+		{
+			komsuSayısı=0;
+			if(i!=0 && j!=0 && grid[i-1][j-1]==true)  
+				komsuSayısı++;
+			if(i!=0 && grid[i-1][j]==true)
+				komsuSayısı++;
+			if(i!=0 && j!=grid.length-1 && grid[i-1][j+1]==true)
+				komsuSayısı++;
+			if(j!=0 && grid[i][j-1]==true)
+				komsuSayısı++;
+			if(j!=grid.length-1 && grid[i][j+1]==true)
+				komsuSayısı++;
+			if(i!=grid.length-1 && j!=0 && grid[i+1][j-1]==true)
+				komsuSayısı++;
+			if(i!=grid.length-1 && grid[i+1][j]==true)
+				komsuSayısı++;
+			if(i!=grid.length-1 && j!=grid.length-1 && grid[i+1][j+1]==true)
+				komsuSayısı++;
+			if(grid[i][j]==false && komsuSayısı==3)
+				tempGrid[i][j]=true;
+			if(komsuSayısı<2 || komsuSayısı>3)
+				tempGrid[i][j]=false;
+			if(grid[i][j]==true && komsuSayısı==2 || komsuSayısı==3)
+				tempGrid[i][j]=true;
+	}}
+	
+	int bulundu=0;
+	for(int k=0;k<grid.length;k++) 
+	{
+		for(int j=0;j<grid.length;j++)
+		{
+			if(grid[k][j]!=tempGrid[k][j])
+				bulundu=1;
+		}
+	}
+	if(bulundu==0)
+	{
+		System.out.println("Stable..."); 
+		System.exit(0); 
+	}
+		else
+	{
+	for(int i=0;i<grid.length;i++)
+		for(int j=0;j<grid.length;j++)
+		{
+			grid[i][j]=tempGrid[i][j]; 
+		}
+	}
+	
+}
+	
+
+public void displayGrid()
+{
+	for(int i=0;i<grid.length;i++) 
+	{
+		for(int j=0;j<grid.length;j++)
+		{
+			if(tempGrid[i][j]==true)
+				System.out.print("*");
+			else
+				System.out.print("-");
+		}
+	System.out.println();
+	}
+	
+}
+}
